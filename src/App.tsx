@@ -223,9 +223,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8 px-4 print:p-0 print:bg-white">
+    <div className="min-h-screen bg-gray-100 py-8 px-2 sm:px-4 print:p-0 print:bg-white">
       {/* Action Bar */}
-      <div className="max-w-[1000px] mx-auto mb-4 flex justify-end print:hidden">
+      <div className="w-full max-w-[1000px] mx-auto mb-4 flex justify-end print:hidden">
         <button
           onClick={handlePrint}
           className="bg-red-600 text-white px-4 py-2 rounded-md flex items-center gap-2 hover:bg-red-700 transition-colors shadow-lg"
@@ -237,7 +237,7 @@ export default function App() {
       </div>
 
       {/* Main Form Page */}
-      <div className="max-w-[1000px] mx-auto bg-white border-2 border-black print:border-none shadow-xl print:shadow-none overflow-hidden print:overflow-visible print:m-0 print:p-0" id="form-content">
+      <div className="w-full max-w-[1000px] mx-auto bg-white border-2 border-black print:border-none shadow-xl print:shadow-none overflow-hidden print:overflow-visible print:m-0 print:p-0" id="form-content">
         
         {/* Header Section */}
         <div className="text-center border-b-2 border-black py-1 bg-slate-200">
@@ -245,7 +245,7 @@ export default function App() {
         </div>
 
         {/* Top Row: Logo, Unidade, Solicitação, Datas */}
-        <div className="grid grid-cols-24 border-b border-black h-[60px]">
+        <div className="grid grid-cols-24 border-b border-black h-[60px] header-top-row">
           {/* Logo Area (6 units) */}
           <div className="col-span-6 border-r border-black p-1 py-1 flex flex-col items-center justify-center bg-white h-full">
              <div className="flex items-start">
@@ -276,7 +276,7 @@ export default function App() {
            </div>
 
           {/* Unidade/Código Section (3 units) */}
-          <div className="col-span-3 border-r border-black flex flex-col bg-white h-full">
+          <div className="col-span-3 border-r border-black flex flex-col bg-white h-full mobile-top-line">
             <div className="h-[14px] border-b border-black flex items-center justify-center text-[12px] font-bold uppercase">UNIDADE</div>
             <div className="h-[16px] border-b border-black flex items-center justify-center px-0.5">
               <input 
@@ -296,7 +296,7 @@ export default function App() {
           </div>
 
           {/* Tipo de Solicitação (11 units) */}
-          <div className="col-span-11 flex flex-col bg-white h-full">
+          <div className="col-span-11 flex flex-col bg-white h-full mobile-top-line">
             <div className="h-[14px] border-b border-black flex items-center justify-center text-[12px] font-bold uppercase">
               TIPO DE SOLICITAÇÃO:
             </div>
@@ -319,7 +319,7 @@ export default function App() {
           <div className="col-span-4 flex flex-col bg-white h-full">
             <div className="h-[14px] border-b border-black"></div> {/* Space above Occurrence matched to Solicitação header */}
             <div className="flex-1 border-b border-black grid grid-cols-3 items-stretch">
-              <div className="col-span-1 border-r border-black flex items-center justify-center text-[7.5px] font-bold uppercase h-full">OCORRÊNCIA</div>
+              <div className="col-span-1 border-r border-black flex items-center justify-center text-[7.5px] font-bold uppercase h-full ocorrencia-label">OCORRÊNCIA</div>
               <div className="col-span-2 flex items-center justify-center px-0.5">
                 <input 
                   className="w-full text-center text-[8.5px] outline-none font-bold" 
@@ -443,7 +443,7 @@ export default function App() {
         </div>
 
         {/* Operational */}
-        <div className="grid grid-cols-24 border-b border-black bg-white items-stretch">
+        <div className="grid grid-cols-24 border-b border-black bg-white items-stretch mobile-operational">
           <div className="col-span-3 border-r border-black p-1 flex flex-col">
             <label className="text-[9px] font-bold leading-tight uppercase">Classe econômica:</label>
             <div className="flex gap-1 justify-between flex-1 items-center px-0.5">
@@ -462,7 +462,7 @@ export default function App() {
           </div>
           <div className="col-span-5 border-r border-black p-1 flex flex-col">
             <label className="text-[9px] font-bold leading-tight uppercase">Visita:</label>
-            <div className="flex gap-1 flex-1 items-center">
+            <div className="flex gap-1 flex-1 items-center visita-checkboxes">
               <Checkbox id="v_s" label="S" checked={!!checkedItems['v_s']} onToggle={() => handleCheckboxToggle('v_s')} />
               <Checkbox id="v_t" label="T" checked={!!checkedItems['v_t']} onToggle={() => handleCheckboxToggle('v_t')} />
               <Checkbox id="v_q" label="Q" checked={!!checkedItems['v_q']} onToggle={() => handleCheckboxToggle('v_q')} />
@@ -611,7 +611,7 @@ export default function App() {
         <div className="bg-slate-200 text-black text-center border-b border-black py-0.5 text-[10px] font-bold uppercase">
           PREENCHIMENTO EXCLUSIVO PARA EXCLUSÃO
         </div>
-        <div className="grid grid-cols-12 border-b border-black">
+        <div className="grid grid-cols-12 border-b border-black mobile-exclusion">
           <div className="col-span-7 border-r border-black p-1 flex flex-col">
             <span className="text-[9px] font-bold mb-1">Situação do cliente:</span>
             <div className="flex gap-4">
@@ -696,16 +696,17 @@ export default function App() {
         </div>
 
         {/* Footer Area */}
-        <div className="py-8 flex justify-center text-[11px] font-bold italic gap-2 items-end px-4">
+        <div className="py-8 flex justify-center text-[11px] font-bold italic gap-2 items-end px-4 mobile-footer">
           <input 
             className="w-64 border-b border-black text-center min-h-[14px] outline-none italic" 
             placeholder="Cidade"
             value={formData.footerCidade}
             onChange={(e) => updateField('footerCidade', e.target.value)}
           />
-          <div className="flex items-baseline gap-1">
+          <div className="flex items-baseline gap-1 footer-date-group">
             <input 
-              className="w-10 border-b border-black text-center min-h-[14px] outline-none" 
+              className="w-10 border-b border-black text-center min-h-[14px] outline-none italic" 
+              placeholder="Dia"
               maxLength={2}
               value={formData.footerDia}
               onChange={(e) => updateField('footerDia', e.target.value)}
@@ -719,7 +720,8 @@ export default function App() {
             />
             <span>de</span>
             <input 
-              className="w-16 border-b border-black text-center min-h-[14px] outline-none" 
+              className="w-16 border-b border-black text-center min-h-[14px] outline-none italic" 
+              placeholder="Ano"
               maxLength={4}
               value={formData.footerAno}
               onChange={(e) => updateField('footerAno', e.target.value)}
@@ -737,6 +739,184 @@ export default function App() {
         @page {
           size: A4 portrait;
           margin: 6mm !important;
+        }
+        @media screen and (max-width: 768px) {
+          .header-top-row {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            grid-auto-rows: auto !important;
+            height: auto !important;
+            row-gap: 0.25rem !important;
+          }
+          .header-top-row > div {
+            grid-column: auto !important;
+            width: 100% !important;
+            border-right: none !important;
+            min-width: 0 !important;
+          }
+          .header-top-row .grid-cols-3,
+          .header-top-row .grid-cols-2 {
+            display: grid !important;
+            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+            gap: 0.25rem !important;
+          }
+          .header-top-row .flex.items-start {
+            flex-wrap: wrap !important;
+          }
+          .header-top-row .border-r {
+            border-right: none !important;
+          }
+          .header-top-row .mobile-top-line {
+            position: relative !important;
+          }
+          .header-top-row .mobile-top-line::before {
+            content: "" !important;
+            position: absolute !important;
+            left: 0 !important;
+            right: 0 !important;
+            top: 0 !important;
+            border-top: 1px solid #000 !important;
+          }
+          .mobile-operational {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 0.25rem !important;
+          }
+          .mobile-operational > div {
+            grid-column: auto !important;
+            width: 100% !important;
+            min-width: 0 !important;
+            border-right: none !important;
+            padding: 0.35rem 0.5rem !important;
+          }
+          .mobile-operational label {
+            display: block !important;
+            text-align: left !important;
+            margin-bottom: 0.2rem !important;
+            background: rgba(15, 23, 42, 0.05) !important;
+            padding: 0.2rem 0.35rem !important;
+            border-radius: 0.25rem !important;
+            border: 1px solid rgba(15, 23, 42, 0.08) !important;
+          }
+          .mobile-operational input {
+            min-height: 2rem !important;
+            padding: 0.35rem !important;
+            width: 100% !important;
+            background: transparent !important;
+          }
+          .mobile-operational .visita-checkboxes {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            gap: 0.25rem !important;
+            align-items: start !important;
+          }
+          .mobile-operational .visita-checkboxes button {
+            justify-content: flex-start !important;
+            width: 100% !important;
+            padding: 0.25rem 0.35rem !important;
+          }
+          .mobile-operational .flex.gap-1.justify-between {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            gap: 0.25rem !important;
+            align-items: center !important;
+          }
+          .mobile-operational .flex.gap-1.justify-between > button {
+            justify-content: center !important;
+          }
+          .mobile-exclusion {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 0.25rem !important;
+          }
+          .mobile-exclusion > div {
+            grid-column: auto !important;
+            width: 100% !important;
+            min-width: 0 !important;
+            border-right: none !important;
+          }
+          .mobile-exclusion .flex.gap-4 {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 0.5rem !important;
+          }
+          .mobile-exclusion .flex.gap-8 {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 0.5rem !important;
+          }
+          .mobile-exclusion .flex.items-center.gap-1 {
+            flex-wrap: wrap !important;
+            gap: 0.35rem !important;
+          }
+          .mobile-exclusion .flex.items-center.gap-1 input {
+            min-width: 3rem !important;
+            width: 100% !important;
+          }
+          .mobile-exclusion .text-[9px] {
+            font-size: 0.85rem !important;
+          }
+          .mobile-footer {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 0.75rem !important;
+          }
+          .mobile-footer input {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+          .mobile-footer .footer-date-group {
+            display: grid !important;
+            grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+            gap: 0.25rem !important;
+            align-items: center !important;
+          }
+          .mobile-footer .footer-date-group span {
+            justify-self: center !important;
+          }
+          .mobile-footer .footer-date-group input {
+            min-width: 0 !important;
+          }
+          .header-top-row .text-[28px] {
+            font-size: 1.1rem !important;
+          }
+          .header-top-row .text-[12px] {
+            font-size: 0.8rem !important;
+          }
+          .header-top-row .text-[9px],
+          .header-top-row .text-[8px],
+          .header-top-row .text-[7.5px] {
+            font-size: 0.75rem !important;
+          }
+          .header-top-row input,
+          .header-top-row .text-[9px] {
+            font-size: 0.85rem !important;
+          }
+          .header-top-row .w-16 {
+            width: 3rem !important;
+          }
+          .header-top-row .w-3 {
+            width: 1.5rem !important;
+          }
+          .header-top-row .w-5 {
+            width: 2rem !important;
+          }
+          .header-top-row .h-\[60px\] {
+            height: auto !important;
+            min-height: auto !important;
+          }
+          .header-top-row .h-\[14px\] {
+            height: auto !important;
+          }
+          .header-top-row .h-\[16px\] {
+            height: auto !important;
+          }
+          .header-top-row .text-center {
+            text-align: left !important;
+          }
+          .header-top-row .border-b {
+            border-bottom-width: 1px !important;
+          }
         }
         @media print {
           * {
@@ -788,6 +968,12 @@ export default function App() {
           }
           #form-content .text-[7.5px] {
             font-size: 3px !important;
+            line-height: 1 !important;
+            letter-spacing: 0 !important;
+            padding: 0 !important;
+          }
+          #form-content .ocorrencia-label {
+            font-size: 6px !important;
             line-height: 1 !important;
             letter-spacing: 0 !important;
             padding: 0 !important;
