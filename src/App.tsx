@@ -351,7 +351,7 @@ export default function App() {
               </div>
             </div>
             <div className="flex-1 grid grid-cols-3 items-stretch">
-              <div className="col-span-1 border-r border-black flex items-center justify-center text-[7.5px] font-bold uppercase px-0.5 leading-tight text-center h-full">AGENDAM.</div>
+              <div className="col-span-1 border-r border-black flex items-center justify-center text-[7.5px] font-bold uppercase px-0.5 leading-tight text-center h-full ocorrencia-label">AGENDAM.</div>
               <div className="col-span-2 flex items-center justify-center gap-0.5 px-0.5 relative group">
                 <input className="w-3 text-center text-[8px] outline-none font-bold bg-transparent" maxLength={2} value={formData.agendamentoDia} onChange={(e) => updateField('agendamentoDia', e.target.value)} />
                 <span className="text-[8px]">/</span>
