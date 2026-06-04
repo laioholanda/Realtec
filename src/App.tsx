@@ -337,7 +337,7 @@ export default function App() {
                 <span className="text-[8px]">/</span>
                 <input className="w-5 text-center text-[8px] outline-none font-bold bg-transparent" maxLength={4} value={formData.dataAno} onChange={(e) => updateField('dataAno', e.target.value)} />
                 
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center pr-0.5">
+                <div className="absolute right-0 top-[42%] -translate-y-1/2 opacity-100 transition-opacity flex items-center pr-0.5">
                   <DatePicker
                     selected={parseDate(formData.dataDia, formData.dataMes, formData.dataAno)}
                     onChange={(date) => handleDateChange('data', date)}
@@ -359,7 +359,7 @@ export default function App() {
                 <span className="text-[8px]">/</span>
                 <input className="w-5 text-center text-[8px] outline-none font-bold bg-transparent" maxLength={4} value={formData.agendamentoAno} onChange={(e) => updateField('agendamentoAno', e.target.value)} />
 
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center pr-0.5">
+                <div className="absolute right-0 top-[42%] -translate-y-1/2 opacity-100 transition-opacity flex items-center pr-0.5">
                   <DatePicker
                     selected={parseDate(formData.agendamentoDia, formData.agendamentoMes, formData.agendamentoAno)}
                     onChange={(date) => handleDateChange('agendamento', date)}
@@ -977,6 +977,9 @@ export default function App() {
             line-height: 1 !important;
             letter-spacing: 0 !important;
             padding: 0 !important;
+          }
+          #form-content .relative > .absolute {
+            display: none !important;
           }
           #form-content input,
           #form-content textarea,
