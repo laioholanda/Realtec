@@ -729,8 +729,25 @@ export default function App() {
           </div>
         </div>
 
-        <div className="text-center font-bold text-[10px] pb-1 uppercase bg-white">
-          CLASSIFICADO - USO RESTRITO
+        <div className="px-4 pb-4 text-center text-[9px] leading-tight font-bold bg-white">
+          Este formulário somente poderá ser assinado pelo solicitante ou por procurador devidamente autorizado.
+        </div>
+
+        <div className="bg-white">
+          <div className="text-center font-bold text-[10px] uppercase py-1 border-b border-black">
+            CLASSIFICADO - USO RESTRITO
+          </div>
+          <div className="text-center font-bold text-[9px] uppercase py-1 border-b border-black bg-slate-200">
+            NOTA DE PRIVACIDADE
+          </div>
+          <div className="px-2 py-2 text-[8.5px] leading-tight">
+            <p className="mb-1">
+              Solar coleta e trata os dados pessoais informados neste formulário para fins de cadastramento como cliente. O tratamento será realizado em conformidade com a legislação aplicável.
+            </p>
+            <p>
+              Você encontra informações detalhadas sobre como utilizamos, protegemos e compartilhamos seus dados pessoais, bem como sobre os seus direitos como titular em nossa Política de Privacidade, disponível em nosso site: https://www.solarbr.com.br/politica-privacidade.
+            </p>
+          </div>
         </div>
       </div>
 
